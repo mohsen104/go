@@ -6,7 +6,5 @@ import (
 )
 
 func main()  {
-	fmt.Println(utils.IsPalindrome(121))
-	fmt.Println(utils.IsPalindrome(-121))
-	fmt.Println(utils.IsPalindrome(10))
+	fmt.Println(utils.RomanToInt("MCMXCIV"))
 }
