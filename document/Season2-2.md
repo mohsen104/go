@@ -1,15 +1,15 @@
-## 🧩 انواع کلی دیتا تایپ‌ها در زبان Go
+## 🧩 General Data Type Categories in Go
 
-در Go داده‌ها به چند دسته‌ی اصلی تقسیم می‌شن:
+In Go, data types are divided into several main categories:
 
 ---
 
-### **1. Basic (یا Primitive Types) — نوع‌های پایه**
+### **1. Basic (or Primitive) Types**
 
-نوع‌هایی که مستقیماً مقدار رو نگه می‌دارن.
-مثلاً اعداد، رشته، و بولین.
+Types that directly hold values.
+Examples: numbers, strings, booleans.
 
-🧠 مثال‌ها:
+🧠 Examples:
 
 ```go
 bool
@@ -18,48 +18,48 @@ int, int8, int16, int32, int64
 uint, uint8, uint16, uint32, uint64
 float32, float64
 complex64, complex128
-byte (alias برای uint8)
-rune (alias برای int32)
+byte (alias for uint8)
+rune (alias for int32)
 ```
 
 ---
 
-### **2. Composite Types — نوع‌های ترکیبی**
+### **2. Composite Types**
 
-نوع‌هایی که از ترکیب چند داده‌ی ساده ساخته می‌شن.
+Types that are composed of multiple simple data elements.
 
-🧠 مثال‌ها:
+🧠 Examples:
 
 ```go
-array   // آرایه با اندازه ثابت
-slice   // آرایه پویا
-map     // کلید و مقدار (Key-Value)
-struct  // ساختار داده‌ای شامل چند فیلد
+array   // Fixed-size array
+slice   // Dynamic array
+map     // Key-value pairs
+struct  // Data structure containing multiple fields
 ```
 
 ---
 
-### **3. Reference Types — نوع‌های ارجاعی**
+### **3. Reference Types**
 
-به‌جای نگهداری مقدار، به آدرس حافظه اشاره می‌کنن.
+Instead of holding the value directly, they reference a memory address.
 
-🧠 مثال‌ها:
+🧠 Examples:
 
 ```go
-pointer  // اشاره‌گر به یک مقدار
-function // تابع به‌عنوان مقدار
-channel  // برای ارتباط بین goroutine‌ها
-interface // نوع انتزاعی برای چندین نوع مختلف
+pointer  // Pointer to a value
+function // Function as a value
+channel  // For communication between goroutines
+interface // Abstract type for multiple different types
 ```
 
 ---
 
-### **4. Interface Types — نوع‌های رابطی**
+### **4. Interface Types**
 
-نوع‌هایی که فقط **رفتار (method)** تعریف می‌کنن، نه داده.
-هر نوعی که اون متدها رو پیاده کنه، به اون interface تعلق داره.
+Types that only define **behavior (methods)**, not data.
+Any type that implements those methods belongs to that interface.
 
-🧠 مثال:
+🧠 Example:
 
 ```go
 type Writer interface {
@@ -69,11 +69,11 @@ type Writer interface {
 
 ---
 
-### **5. Function Type — نوع تابع**
+### **5. Function Type**
 
-در Go توابع خودشون یک نوع داده هستن، یعنی می‌تونی تابع رو داخل متغیر بریزی یا به‌عنوان پارامتر بفرستی.
+In Go, functions themselves are a data type, meaning you can assign functions to variables or pass them as parameters.
 
-🧠 مثال:
+🧠 Example:
 
 ```go
 var f func(int) int
@@ -81,12 +81,12 @@ var f func(int) int
 
 ---
 
-### 📘 خلاصه کلی جدول‌وار:
+### 📘 Summary Table:
 
-| دسته      | مثال                                  | توضیح             |
-| --------- | ------------------------------------- | ----------------- |
-| Basic     | int, bool, string                     | نوع‌های پایه      |
-| Composite | array, slice, map, struct             | نوع‌های ترکیبی    |
-| Reference | pointer, function, channel, interface | نوع‌های ارجاعی    |
-| Interface | Writer, Reader                        | نوع‌های رفتاری    |
-| Function  | func()                                | تابع به‌عنوان نوع |
+| Category   | Examples                              | Description              |
+| ---------- | ------------------------------------- | ------------------------ |
+| Basic      | int, bool, string                     | Fundamental types        |
+| Composite  | array, slice, map, struct             | Compound types           |
+| Reference  | pointer, function, channel, interface | Reference types          |
+| Interface  | Writer, Reader                        | Behavioral types         |
+| Function   | func()                                | Function as a type       |
