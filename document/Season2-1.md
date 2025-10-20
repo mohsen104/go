@@ -1,82 +1,82 @@
-### **۱. پکیج (Package) چیست؟**
+### **1. What is a Package?**
 
-پکیج مجموعه‌ای از فایل‌های Go هست که با هم برای انجام یک کار خاص ساخته شدن.
-هر فایل Go با `package packagename` شروع میشه.
+A package is a collection of Go files that are built together to perform a specific task.
+Every Go file starts with `package packagename`.
 
-🧠 مثال:
-`fmt`, `strings`, `net/http` پکیج‌های استاندارد Go هستن.
-
----
-
-### **۲. ماژول (Module) چیست؟**
-
-ماژول سطح بالاتر از پکیجه؛ مجموعه‌ای از چند پکیج که با هم یه پروژه کامل رو می‌سازن.
-هر ماژول با دستور `go mod init` ساخته میشه و فایل `go.mod` داره.
-
-🧠 مثال:
-یه پروژه وب می‌تونه چند پکیج (`auth`, `routes`, `db`) داشته باشه و همشون داخل یه ماژول باشن.
+🧠 Example:
+`fmt`, `strings`, and `net/http` are standard Go packages.
 
 ---
 
-### **۳. تفاوت پکیج و ماژول چیست؟**
+### **2. What is a Module?**
 
-| ویژگی        | Package             | Module           |
-| ------------ | ------------------- | ---------------- |
-| سطح          | واحد کوچک‌تر        | واحد بزرگ‌تر     |
-| شامل         | چند فایل Go         | چند پکیج         |
-| فایل تنظیمات | نداره               | `go.mod` داره    |
-| ساخت         | خودکار با دایرکتوری | با `go mod init` |
+A module is a higher-level unit than a package; it's a collection of multiple packages that together form a complete project.
+Each module is created using the `go mod init` command and has a `go.mod` file.
 
-🧠 خلاصه:
-
-> پکیج = بخش کوچک از کد
-
-> ماژول = کل پروژه شامل چند پکیج
+🧠 Example:
+A web project can have several packages (`auth`, `routes`, `db`) and all of them can be within a single module.
 
 ---
 
-### **۴. مهم‌ترین Go CLI‌ها (دستورات Go)**
+### **3. What is the Difference Between a Package and a Module?**
 
-* `go run` → اجرای فایل Go
-* `go build` → ساخت (کامپایل) برنامه
-* `go mod init` → ساخت ماژول جدید
-* `go get` → نصب پکیج از اینترنت
-* `go fmt` → فرمت کردن کدها
-* `go test` → اجرای تست‌ها
-* `go doc` → نمایش مستندات
-* `go clean` → پاک کردن فایل‌های ساخته‌شده
+| Feature       | Package                 | Module                |
+| ------------- | ----------------------- | --------------------- |
+| Level         | Smaller Unit            | Larger Unit           |
+| Contains      | Several Go Files        | Multiple Packages     |
+| Config File   | None                    | Has `go.mod`          |
+| Creation      | Automatic (by directory)| Via `go mod init`     |
 
----
+🧠 Summary:
 
-### **۵. انواع کلی دیتا تایپ‌ها در Go**
+> Package = Small piece of code
 
-داده‌ها در Go به چند گروه تقسیم می‌شن:
-
-* **اعداد (Numeric)** → int, float
-* **رشته‌ای (String)**
-* **منطقی (Boolean)**
-* **مجموعه‌ای (Composite)** → array, slice, map, struct
-* **ویژه (Special)** → pointer, interface, function
+> Module = Entire project containing multiple packages
 
 ---
 
-### **۶. دیتا تایپ‌های گولنگ (جزئی‌تر)**
+### **4. Most Important Go CLI Commands**
 
-* اعداد صحیح: `int`, `int8`, `int16`, `int32`, `int64`, `uint`, ...
-* اعشاری: `float32`, `float64`
-* منطقی: `bool`
-* رشته‌ای: `string`
-* بایت و کاراکتر: `byte`, `rune`
-* ترکیبی: `array`, `slice`, `map`, `struct`
-* دیگر: `pointer`, `interface`, `function`
+* `go run` → Run a Go file
+* `go build` → Build (compile) the program
+* `go mod init` → Create a new module
+* `go get` → Install a package from the internet
+* `go fmt` → Format code files
+* `go test` → Run tests
+* `go doc` → Show documentation
+* `go clean` → Clean up generated files
 
 ---
 
-### **۷. تعریف Enum در گولنگ چیست؟**
+### **5. General Data Type Categories in Go**
 
-Go enum واقعی نداره، ولی میشه با `const` و `iota` شبیه‌سازی کرد.
+Data in Go is divided into several groups:
 
-🧠 مثال:
+* **Numeric** → int, float
+* **String**
+* **Boolean**
+* **Composite** → array, slice, map, struct
+* **Special** → pointer, interface, function
+
+---
+
+### **6. Golang Data Types (More Detailed)**
+
+* Integers: `int`, `int8`, `int16`, `int32`, `int64`, `uint`, ...
+* Floating-Point: `float32`, `float64`
+* Boolean: `bool`
+* String: `string`
+* Byte and Character: `byte`, `rune`
+* Composite: `array`, `slice`, `map`, `struct`
+* Others: `pointer`, `interface`, `function`
+
+---
+
+### **7. How is Enum Defined in Golang?**
+
+Go doesn't have real enums, but they can be simulated using `const` and `iota`.
+
+🧠 Example:
 
 ```go
 type Day int
@@ -87,56 +87,55 @@ const (
   Tuesday
 )
 ```
-
-`iota` به‌صورت خودکار مقدار ۰، ۱، ۲ و ... می‌گیره.
+`iota` automatically assigns values 0, 1, 2, etc.
 
 ---
 
-### **۸. تعریف Pointer در Go و کاربرد آن**
+### **8. Definition of Pointer in Go and Its Usage**
 
-Pointer اشاره‌گری است به **آدرس حافظه‌ی یک متغیر**.
-به‌جای نگهداری مقدار، آدرس اون رو نگه می‌داره.
+A pointer is a **reference to a variable's memory address**.
+Instead of holding the value, it holds its address.
 
-🧠 مثال:
+🧠 Example:
 
 ```go
 var x = 10
-var p = &x // p اشاره می‌کند به آدرس x
-fmt.Println(*p) // چاپ مقدار x یعنی 10
+var p = &x // p points to the address of x
+fmt.Println(*p) // Prints the value of x, which is 10
 ```
 
-**کاربرد:**
+**Usage:**
 
-* برای تغییر مقدار متغیر در تابع
-* برای کارایی بالاتر (عدم کپی داده بزرگ)
-
----
-
-### **۹. چه جاهایی از Pointer استفاده کنیم و چه جاهایی نکنیم؟**
-
-✅ **استفاده کنیم وقتی:**
-
-* تابع باید مقدار اصلی رو تغییر بده
-* با داده‌های حجیم سروکار داریم (مثلاً struct بزرگ)
-* نیاز به اشتراک حافظه بین بخش‌های مختلف برنامه داریم
-
-❌ **استفاده نکنیم وقتی:**
-
-* داده کوچک و موقته
-* فقط خواندن داده مدنظر است
-* باعث پیچیدگی غیرضروری در کد میشه
+* To change a variable's value within a function
+* For better performance (avoid copying large data)
 
 ---
 
-### **۱۰. تعریف Rune در Go چیست؟**
+### **9. When Should We Use Pointers and When Should We Avoid Them?**
 
-`rune` نوع داده‌ای است برای **نمایش یک کاراکتر یونیکد (Unicode character)**.
-در واقع `rune` همون `int32` هست.
+✅ **Use when:**
 
-🧠 مثال:
+* A function needs to modify the original value
+* Working with large data (e.g., a big struct)
+* There's a need to share memory between different parts of the program
+
+❌ **Avoid when:**
+
+* Data is small and temporary
+* Only reading the data is intended
+* It causes unnecessary complexity in the code
+
+---
+
+### **10. What is the Definition of Rune in Go?**
+
+`rune` is a data type used to **represent a Unicode character**.
+In fact, `rune` is an alias for `int32`.
+
+🧠 Example:
 
 ```go
 var ch rune = 'A'
-fmt.Println(ch)  // 65 (کد یونیکد)
+fmt.Println(ch)  // 65 (Unicode code point)
 fmt.Printf("%c", ch) // A
 ```
