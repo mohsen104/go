@@ -1,73 +1,73 @@
-### **۱. انواع روش‌های تعریف متغیر (variable) در Go و تفاوت و کاربردشان**
+### **۱. Methods of Variable Declaration in Go and Their Differences and Uses**
 
-در Go چند روش برای تعریف متغیر وجود داره 👇
+In Go, there are several ways to declare a variable 👇
 
 ---
 
-#### 🔹 **روش ۱: با `var`**
+#### 🔹 **Method 1: Using `var`**
 
 ```go
 var x int = 10
 ```
 
-- نوع (type) مشخصه.
-- می‌تونی مقدار اولیه بدی یا ندی.
-- اگر مقدار ندی، مقدار پیش‌فرض (zero value) می‌گیره.
+- The type is specified.
+- You can provide an initial value or not.
+- If no value is provided, it gets the zero value.
 
-🧠 مثال:
+🧠 Example:
 
 ```go
-var name string     // مقدارش "" (رشته خالی)
+var name string     // Value is "" (empty string)
 var age int = 25
 ```
 
-✅ **کاربرد:** وقتی بخوای نوع داده رو مشخص کنی یا در سطح پکیج متغیر بسازی.
+✅ **Use Case:** When you want to specify the data type or declare a variable at the package level.
 
 ---
 
-#### 🔹 **روش ۲: با `var` و بدون نوع (type inference)**
+#### 🔹 **Method 2: Using `var` without Type (Type Inference)**
 
 ```go
 var x = 10
 ```
 
-Go خودش نوع متغیر رو تشخیص می‌ده (اینجا `int`).
+Go automatically infers the variable type (here `int`).
 
-✅ **کاربرد:** وقتی مقدار مشخصه و نمی‌خوای نوع رو دستی بنویسی.
+✅ **Use Case:** When the value is clear and you don't want to manually write the type.
 
 ---
 
-#### 🔹 **روش ۳: با `:=` (کوتاه و رایج‌تر)**
+#### 🔹 **Method 3: Using `:=` (Shorter and More Common)**
 
 ```go
 x := 10
 ```
 
-- فقط داخل تابع قابل استفاده‌ست (نه در سطح پکیج).
-- Go خودش نوع رو از مقدار تشخیص می‌ده.
-- پرکاربردترین روش برای تعریف متغیرهای محلی.
+- Can only be used inside a function (not at the package level).
+- Go infers the type from the value.
+- The most common method for declaring local variables.
 
-✅ **کاربرد:** وقتی داخل تابع هستی و سریع می‌خوای متغیر بسازی.
+✅ **Use Case:** When you are inside a function and want to quickly declare a variable.
 
 ---
 
-#### 🔹 **روش ۴: چندتایی (Multiple Declaration)**
+#### 🔹 **Method 4: Multiple Declaration**
 
 ```go
 var a, b, c = 1, 2, 3
 ```
 
-یا
+Or
 
 ```go
 a, b := 5, "test"
 ```
 
-✅ **کاربرد:** وقتی بخوای چند متغیر رو با هم تعریف یا مقداردهی کنی.
+✅ **Use Case:** When you want to declare or initialize multiple variables at once.
 
 ---
 
-#### 🔹 **روش ۵: گروهی (Block Declaration)**
+#### 🔹 **Method 5: Block Declaration**
 
 ```go
 var (
@@ -77,35 +77,35 @@ var (
 )
 ```
 
-✅ **کاربرد:** برای تمیزتر کردن کد و تعریف چند متغیر مرتبط با هم.
+✅ **Use Case:** To make the code cleaner and declare several related variables together.
 
 ---
 
-🧠 **خلاصه‌ی تفاوت‌ها:**
+🧠 **Summary of Differences:**
 
-| روش              | نوع تعریف    | محدوده استفاده | نیاز به مقدار اولیه | ویژگی اصلی             |
-| ---------------- | ------------ | -------------- | ------------------- | ---------------------- |
-| `var x int = 10` | دستی با نوع  | همه‌جا         | اختیاری             | کنترل بیشتر            |
-| `var x = 10`     | با تشخیص نوع | همه‌جا         | الزامی              | خودکار و خواناتر       |
-| `x := 10`        | کوتاه        | فقط داخل تابع  | الزامی              | سریع و پرکاربرد        |
-| `var (...)`      | گروهی        | همه‌جا         | اختیاری             | تمیز و منظم            |
-| `a, b := 1, 2`   | چندتایی      | فقط داخل تابع  | الزامی              | تعریف همزمان چند متغیر |
+| Method             | Type Specification | Scope of Use     | Requires Initial Value | Key Feature               |
+| ------------------ | ------------------ | ---------------- | --------------------- | ------------------------- |
+| `var x int = 10`   | Manual with type   | Everywhere       | Optional              | More control              |
+| `var x = 10`       | Type inference     | Everywhere       | Mandatory             | Automatic and readable    |
+| `x := 10`          | Short              | Inside functions only | Mandatory        | Fast and common           |
+| `var (...)`        | Block              | Everywhere       | Optional              | Clean and organized       |
+| `a, b := 1, 2`     | Multiple           | Inside functions only | Mandatory        | Simultaneous declaration  |
 
 ---
 
-### **۲. تعریف `const` در Go چیست؟**
+### **۲. What is `const` in Go?**
 
-`const` برای تعریف **مقادیر ثابت (ثابت در زمان کامپایل)** استفاده میشه.
-بعد از تعریف نمی‌تونی مقدارش رو تغییر بدی.
+`const` is used to define **constants (fixed at compile time)**.
+After definition, you cannot change its value.
 
-🧠 مثال:
+🧠 Example:
 
 ```go
 const Pi = 3.14
 const Greeting = "Hello"
 ```
 
-یا چندتایی:
+Or multiple:
 
 ```go
 const (
@@ -115,12 +115,12 @@ const (
 )
 ```
 
-📌 نکات:
+📌 Notes:
 
-- فقط می‌تونی به **مقادیر ثابت (literal)** مقدار بدی، نه به خروجی تابع.
-- می‌تونی از `iota` برای ساخت enumهای ساده استفاده کنی.
+- You can only assign **constant values (literals)**, not function outputs.
+- You can use `iota` to create simple enums.
 
-🧠 مثال با `iota`:
+🧠 Example with `iota`:
 
 ```go
 const (
