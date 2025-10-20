@@ -1,10 +1,10 @@
 ### 🧩 **۱. Variadic Functions (توابع با ورودی متغیر)**
 
-✅ **تعریف:**
-توابعی هستن که می‌تونن **تعداد نامشخصی از آرگومان‌ها** بگیرن.
-یعنی لازم نیست بدونی دقیقاً چند تا ورودی داری.
+✅ **Definition:**
+Functions that can take **an unspecified number of arguments**.
+You don't need to know exactly how many inputs you have.
 
-🧠 **نحوه تعریف:**
+🧠 **How to define:**
 
 ```go
 func sum(nums ...int) int {
@@ -16,24 +16,24 @@ func sum(nums ...int) int {
 }
 ```
 
-📦 فراخوانی:
+📦 Calling:
 
 ```go
 sum(1, 2, 3)
 sum(10, 20)
 ```
 
-✅ **کاربرد:**
-وقتی تابع باید ورودی‌های زیادی از یک نوع بگیره (مثل `fmt.Println()` یا `sum()`).
+✅ **Use Case:**
+When a function needs to take many inputs of the same type (like `fmt.Println()` or `sum()`).
 
 ---
 
 ### 🧠 **۲. Anonymous Functions (توابع بی‌نام)**
 
-✅ **تعریف:**
-توابعی هستن که **اسم ندارن** و معمولاً **درجا (inline)** تعریف و استفاده می‌شن.
+✅ **Definition:**
+Functions that **have no name** and are usually defined and used **inline (on the spot)**.
 
-🧠 **مثال:**
+🧠 **Example:**
 
 ```go
 func() {
@@ -41,7 +41,7 @@ func() {
 }()
 ```
 
-یا در متغیر:
+Or in a variable:
 
 ```go
 greet := func(name string) {
@@ -50,13 +50,13 @@ greet := func(name string) {
 greet("Mohsen")
 ```
 
-✅ **کاربرد:**
+✅ **Use Case:**
 
-- برای توابع موقتی
-- برای callback
-- برای کار با goroutine یا event handlerها
+- For temporary functions
+- For callbacks
+- For working with goroutines or event handlers
 
-🧩 مثال:
+🧩 Example:
 
 ```go
 go func() {
@@ -68,10 +68,10 @@ go func() {
 
 ### 🧠 **۳. Closure Functions (توابع بسته / دربسته)**
 
-✅ **تعریف:**
-تابعی که به **متغیرهای بیرون از خودش** دسترسی داره حتی بعد از اجرای اون محدوده.
+✅ **Definition:**
+A function that has access to **variables outside of itself** even after that scope has finished executing.
 
-🧠 **مثال:**
+🧠 **Example:**
 
 ```go
 func counter() func() int {
@@ -87,24 +87,24 @@ fmt.Println(next()) // 1
 fmt.Println(next()) // 2
 ```
 
-✅ **کاربرد:**
+✅ **Use Case:**
 
-- ساخت توابع حالت‌دار (stateful)
-- نگهداری داده بین چند بار اجرا
-- پیاده‌سازی data encapsulation (پنهان‌سازی داده)
+- Creating stateful functions
+- Preserving data between multiple executions
+- Implementing data encapsulation
 
-🧩 خلاصه:
+🧩 Summary:
 
-> Closure = تابعی که متغیرهای محیط بیرونش رو “به خاطر می‌سپاره”.
+> Closure = A function that "remembers" the variables from its outer environment.
 
 ---
 
 ### 🧠 **۴. Defer Functions (توابع با اجرای تأخیری)**
 
-✅ **تعریف:**
-کلمه‌ی کلیدی `defer` باعث میشه **اجرای تابع تا پایان تابع فعلی به تأخیر بیفته**.
+✅ **Definition:**
+The `defer` keyword causes **the execution of a function to be delayed until the current function finishes**.
 
-🧠 **مثال:**
+🧠 **Example:**
 
 ```go
 func main() {
@@ -113,32 +113,32 @@ func main() {
 }
 ```
 
-📦 خروجی:
+📦 Output:
 
 ```
 Hello
 World
 ```
 
-✅ **کاربرد:**
+✅ **Use Case:**
 
-- برای **پاک‌سازی منابع** مثل بستن فایل یا کانکشن
-- اجرای کارهایی که باید _در آخر_ انجام بشن (مثل finally در دیگر زبان‌ها)
+- For **resource cleanup** like closing files or connections
+- Executing tasks that must be done *at the end* (like finally in other languages)
 
-🧠 مثال کاربردی:
+🧠 Practical Example:
 
 ```go
 file, _ := os.Open("data.txt")
-defer file.Close() // بسته شدن فایل در انتها
+defer file.Close() // File closes at the end
 ```
 
 ---
 
-### 📘 **خلاصه‌ی سریع جدول‌وار**
+### 📘 **Quick Summary Table**
 
-| نوع تابع      | تعریف                          | کاربرد اصلی          | مثال                      |
-| ------------- | ------------------------------ | -------------------- | ------------------------- |
-| **Variadic**  | ورودی با تعداد نامشخص          | جمع یا چاپ چند مقدار | `fmt.Println(a, b, c...)` |
-| **Anonymous** | تابع بدون نام                  | callback، goroutine  | `go func() { ... }()`     |
-| **Closure**   | نگهداری state از محیط بیرونی   | شمارنده، حافظه داخلی | تابع `counter()`          |
-| **Defer**     | اجرای تابع در انتهای تابع فعلی | پاک‌سازی منابع       | `defer file.Close()`      |
+| Function Type | Definition                       | Main Use Case         | Example                      |
+| ------------- | -------------------------------- | --------------------- | ---------------------------- |
+| **Variadic**  | Input with unspecified count     | Sum or print multiple values | `fmt.Println(a, b, c...)` |
+| **Anonymous** | Function without a name          | Callbacks, goroutines | `go func() { ... }()`        |
+| **Closure**   | Maintains state from outer scope | Counters, internal memory | `counter()` function         |
+| **Defer**     | Executes function at end of current function | Resource cleanup | `defer file.Close()`         |
