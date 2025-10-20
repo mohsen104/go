@@ -1,23 +1,23 @@
-**۱. زبان گولنگ چه نوع زبانی است؟**
-گو (Golang) یک **زبان کامپایلری** است؛ یعنی قبل از اجرا، کدها را به باینری تبدیل می‌کند و همین باعث سرعت بالای آن می‌شود.
+**1. What kind of language is the Go language?**
+Go (Golang) is a **compiled language**; meaning that before execution, the code is converted into binary, which contributes to its high speed.
 
 ---
 
-**۲. زبان گولنگ سینگل‌ترد است یا مالتی‌ترد؟**
-گو از نظر اجرا **مالتی‌ترد (چندریسمانه)** است، اما مدل هم‌زمانی آن با **goroutine**‌ها پیاده شده که سبک‌تر از تردهای معمولی هستند و توسط زمان‌بند داخلی Go مدیریت می‌شوند.
+**2. Is the Go language single-threaded or multi-threaded?**
+Go is **multi-threaded** in terms of execution, but its concurrency model is implemented using **goroutines**, which are lighter than standard threads and are managed by Go's internal scheduler.
 
 ---
 
-**۳. زبان گولنگ توسط چه کسانی و در چه سالی ساخته شد؟**
-در سال **۲۰۰۷** توسط سه مهندس شرکت گوگل یعنی
-**Robert Griesemer**, **Rob Pike**, و **Ken Thompson** ساخته شد.
-Go طراحی شد تا سادگی و سرعت توسعه‌ی زبان‌هایی مثل Python و JavaScript رو با کارایی و قدرت زبان‌هایی مثل C و Java ترکیب کنه.
+**3. Who created the Go language and in what year?**
+It was created in **2007** by three engineers at Google:
+**Robert Griesemer**, **Rob Pike**, and **Ken Thompson**.
+Go was designed to combine the simplicity and development speed of languages like Python and JavaScript with the performance and power of languages like C and Java.
 
 ---
 
-**۴. تاریخچه زبان گولنگ چیست؟**
+**4. What is the history of the Go language?**
 
-- شروع طراحی در سال **۲۰۰7** در گوگل
-- اولین نسخه عمومی در **۲۰۰۹** منتشر شد
-- نسخه پایدار **Go 1.0** در **۲۰۱۲** عرضه شد
-- از آن زمان تاکنون، Go رشد زیادی کرده و در پروژه‌های کلان، زیرساخت، وب‌سرورها و سیستم‌های ابری به‌کار می‌رود.
+- Design started in **2007** at Google
+- The first public version was released in **2009**
+- The stable **Go 1.0** version was launched in **2012**
+- Since then, Go has experienced significant growth and is used in large-scale projects, infrastructure, web servers, and cloud systems.
