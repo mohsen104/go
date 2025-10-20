@@ -1,10 +1,17 @@
 package main
 
-import (
-	"fmt"
-)
+type IPerson interface {
+	print()
+}
+
+type Person struct {
+}
 
 func main() {
-	fmt.Println("Exiting program")
-	fmt.Println("Hello, World!")
+	p := Person{}
+	p.print()
+}
+
+func (person Person) print() {
+	println("Hello")
 }
