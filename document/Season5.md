@@ -1,4 +1,4 @@
-### 🧩 **۱. Variadic Functions (توابع با ورودی متغیر)**
+### 🧩 **1. Variadic Functions**
 
 ✅ **Definition:**
 Functions that can take **an unspecified number of arguments**.
@@ -28,7 +28,7 @@ When a function needs to take many inputs of the same type (like `fmt.Println()`
 
 ---
 
-### 🧠 **۲. Anonymous Functions (توابع بی‌نام)**
+### 🧠 **2. Anonymous Functions**
 
 ✅ **Definition:**
 Functions that **have no name** and are usually defined and used **inline (on the spot)**.
@@ -66,7 +66,7 @@ go func() {
 
 ---
 
-### 🧠 **۳. Closure Functions (توابع بسته / دربسته)**
+### 🧠 **3. Closure Functions**
 
 ✅ **Definition:**
 A function that has access to **variables outside of itself** even after that scope has finished executing.
@@ -99,7 +99,7 @@ fmt.Println(next()) // 2
 
 ---
 
-### 🧠 **۴. Defer Functions (توابع با اجرای تأخیری)**
+### 🧠 **4. Defer Functions**
 
 ✅ **Definition:**
 The `defer` keyword causes **the execution of a function to be delayed until the current function finishes**.
