@@ -1,4 +1,4 @@
-### **۱. Methods of Variable Declaration in Go and Their Differences and Uses**
+### **2. Methods of Variable Declaration in Go and Their Differences and Uses**
 
 In Go, there are several ways to declare a variable 👇
 
@@ -93,7 +93,7 @@ var (
 
 ---
 
-### **۲. What is `const` in Go?**
+### **2. What is `const` in Go?**
 
 `const` is used to define **constants (fixed at compile time)**.
 After definition, you cannot change its value.
