@@ -1,34 +1,46 @@
+import https from "https";
+
 const TodoList = [];
 
+function getUrl(url) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        let data = "";
+
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+
+        res.on("end", () => {
+          resolve(data);
+        });
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
+}
+
+async function getTodo(id) {
+  return getUrl(`https://jsonplaceholder.typicode.com/todos/${id}`);
+}
+
 async function main() {
-  const p1 = performance.now();
-  for (let i = 1; i < 50; i++) {
-    await GetTodo(i);
+  const start = performance.now();
+
+  const promises = [];
+  for (let i = 1; i <= 100; i++) {
+    promises.push(getTodo(i));
   }
-  const p2 = performance.now();
 
-  console.log(TodoList, (p2 - p1).toFixed(2) + "ms");
+  const results = await Promise.all(promises);
+  TodoList.push(...results);
+
+  const end = performance.now();
+
+  console.log("✅ Done. Total Todos:", TodoList.length);
+  console.log("⏱️ Time:", (end - start).toFixed(2), "ms");
 }
 
-async function GetTodo(id) {
-  await GetUrl(`https://jsonplaceholder.typicode.com/todos/${id}`);
-}
-
-async function GetUrl(url) {
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const resBody = await response.text();
-    TodoList.push(resBody);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error; // Re-throw to maintain similar behavior to panic
-  }
-}
-
-// Execute the main function
 main().catch(console.error);
