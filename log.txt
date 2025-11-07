@@ -1,0 +1,4 @@
+2025/11/07 12:10:08 Start of sum
+2025/11/07 12:10:08 End of sum
+2025/11/07 12:11:19 main.go:25: Start of sum
+2025/11/07 12:11:19 main.go:27: End of sum

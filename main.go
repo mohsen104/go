@@ -2,32 +2,31 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"time"
 )
 
 func main() {
-	numChan := make(chan int)
+	mux := http.NewServeMux()
 
-	go SendDataToChan(numChan)
+	mux.Handle("/google", http.RedirectHandler("http://goolge.com", 307))
+	mux.HandleFunc("/users", GetUser)
 
-	recivedNum := <-numChan
-	PrintlnWithTime("Received Number:", recivedNum)
+	server := http.Server{
+		Addr:         ":8080",
+		ReadTimeout:  time.Second * 10,
+		WriteTimeout: time.Second * 10,
+		Handler:      mux,
+	}
 
-	time.Sleep(time.Second * 2)
+	err := server.ListenAndServe()
+
+	if err != nil {
+		panic(err)
+	}
 }
 
-func SendDataToChan(numChan chan int) {
-	PrintlnWithTime("Before Sending 1 To Channel")
-	numChan <- 1
-	PrintlnWithTime("After Sending 1 To Channel")
-	PrintlnWithTime("Before Sending 2 To Channel")
-	numChan <- 2
-	PrintlnWithTime("After Sending 2 To Channel")
-	PrintlnWithTime("Before Sending 3 To Channel")
-	numChan <- 3
-	PrintlnWithTime("After Sending 3 To Channel")
-}
-
-func PrintlnWithTime(args ...any) {
-	fmt.Printf("Time %s, %v\n", time.Now().Format(time.RFC3339Nano), args)
+func GetUser(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(205)
+	fmt.Fprintln(w, "Helloooo")
 }
